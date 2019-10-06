@@ -13,8 +13,7 @@ using System.Diagnostics;
 
 namespace ConsoleApp3
 {
-	
-	 public class Student
+public class Student
     {
         private int studyDebts;
         private bool isGood;
@@ -53,34 +52,34 @@ namespace ConsoleApp3
             {
                 if (isGood == false)
                 {
-                    myMessage = "РџРµСЂРµСЂР°РЅРґРѕРјРёС‚СЊ РїСЊСЏРЅС‹Р№/С‚СЂРµР·РІС‹Р№";
+                    myMessage = "Перерандомить пьяный/трезвый";
                     throw (new ArgumentOutOfRangeException("", isGood, myMessage));
                 }
                 isExpelled = true;
 
             }
 
-            WriteLine("РџСЂРёР·РЅР°Рє РѕС‚С‡РёСЃР»РµРЅРёСЏ: " + ((isExpelled) ? "РћС‚С‡РёСЃР»РµРЅ" : "РћСЃС‚Р°РІР»РµРЅ"));
+            WriteLine("Признак отчисления: " + ((isExpelled) ? "Отчислен" : "Оставлен"));
         }
 
         public void GetInfo()
         {
-            WriteLine($"\nРЎС‚СѓРґРµРЅС‚: {name}");
-            WriteLine($"Р¤Р°РєСѓР»СЊС‚РµС‚: {faculty}");
+            WriteLine($"\nСтудент: {name}");
+            WriteLine($"Факультет: {faculty}");
             WriteLine($"IQ: {iq}");
-            WriteLine("РЎРѕСЃС‚РѕСЏРЅРёРµ СЃС‚СѓРґРµРЅС‚Р°: " + ((IsGood) ? "РўСЂРµР·РІ" : "РџСЊСЏРЅ"));
-            WriteLine($"РҐРІРѕСЃС‚С‹: {studyDebts}");
+            WriteLine("Состояние студента: " + ((IsGood) ? "Трезв" : "Пьян"));
+            WriteLine($"Хвосты: {studyDebts}");
         }
     }
-}
+
     class Program
     {
         static void Main(string[] args)
         {
-            Random SourceGen = new Random(); 
+            Random SourceGen = new Random(); // создаем генератор случайных чисел
 
-            string[] studentNames = { "РђРЅС‚РѕРЅ Р’Р°СЃРёР»РµРЅРєРѕ", "РћР»РµРі РџРµСЂРµРіСѓРґР°", "Р•РІРіРµРЅРёР№ РЎР°СЂР°С‚РѕРІ", "Р”РµРЅРёСЃ Р“Р°РЅР¶СѓРіР°", "РђРЅР°СЃС‚Р°СЃРёСЏ Р“РµСЂСѓСЃ", "Р РѕРјР°РЅ РџСЂРѕСЃРєСѓС‡РµРЅРєРѕ" };
-            string[] facultyNames = { "Р¤Р­Рђ", "Р РўР¤", "Р¤РР’Рў", "РЎР¤", "РРџРЎРђ", "Р¤РџРњ" };
+            string[] studentNames = { "Антон Василенко", "Олег Перегуда", "Евгений Саратов", "Денис Ганжуга", "Анастасия Герус", "Роман Проскученко" };
+            string[] facultyNames = { "ФЭА", "РТФ", "ФИВТ", "СФ", "ИПСА", "ФПМ" };
             Student[] students = new Student[studentNames.Length];
 
             int newStudyDebts;
@@ -114,11 +113,10 @@ namespace ConsoleApp3
                     else students[i].IsExpelled = true;
 
                     students[i].GetInfo();
-                    WriteLine("РџСЂРёР·РЅР°Рє РѕС‚С‡РёСЃР»РµРЅРёСЏ: " + ((students[i].IsExpelled) ? "РћС‚С‡РёСЃР»РµРЅ" : "РћСЃС‚Р°РІР»РµРЅ"));
+                    WriteLine("Признак отчисления: " + ((students[i].IsExpelled) ? "Отчислен" : "Оставлен"));
                 }
             }
             ReadKey();
         }
     }
 }
-
